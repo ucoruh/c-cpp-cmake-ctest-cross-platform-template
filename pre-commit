@@ -4,7 +4,6 @@
 
 OPTIONS="--options=astyle-options.txt"
 
-
 # Check if .gitignore file exists
 if [ ! -f astyle-options.txt ]; then
     echo "[!] astyle-options.txt file not found. Please make sure the astyle-options.txt file is present." >&2
@@ -30,27 +29,27 @@ if [ ! -f README.md ]; then
     exit 1
 fi
 
-# Check if DoxyfileLibLinux file exists
+# Check if .gitignore file exists
 if [ ! -f DoxyfileLibLinux ]; then
-    echo "[!] DoxyfileLibLinux file not found. Please make sure the DoxyfileLibLinux file is present." >&2
+    echo "[!] DoxyfileLibLinux file not found. Please make sure the Doxyfile file is present." >&2
     exit 1
 fi
 
-# Check if DoxyfileLibWin file exists
+# Check if .gitignore file exists
 if [ ! -f DoxyfileLibWin ]; then
-    echo "[!] DoxyfileLibWin file not found. Please make sure the DoxyfileLibWin file is present." >&2
+    echo "[!] DoxyfileLibWin file not found. Please make sure the Doxyfile file is present." >&2
     exit 1
 fi
 
-# Check if DoxyfileTestLinux file exists
+# Check if .gitignore file exists
 if [ ! -f DoxyfileTestLinux ]; then
-    echo "[!] DoxyfileTestLinux file not found. Please make sure the DoxyfileTestLinux file is present." >&2
+    echo "[!] DoxyfileTestLinux file not found. Please make sure the Doxyfile file is present." >&2
     exit 1
 fi
 
-# Check if DoxyfileTestWin file exists
+# Check if .gitignore file exists
 if [ ! -f DoxyfileTestWin ]; then
-    echo "[!] DoxyfileTestWin file not found. Please make sure the DoxyfileTestWin file is present." >&2
+    echo "[!] DoxyfileTestWin file not found. Please make sure the Doxyfile file is present." >&2
     exit 1
 fi
 
@@ -75,5 +74,29 @@ if [ $RETURN -eq 1 ]; then
     echo "Make sure you have run AStyle with the following options:" >&2
     echo $OPTIONS >&2
 fi
+
+# Delete desktop.ini files and remove from git cache
+# find . -name 'desktop.ini' -exec git rm --cached --force {} \; -exec rm {} \;
+
+echo ":::: DELETE desktop.ini FILES FROM PROJECT AND .GIT FOLDERS ::::"
+
+# Save the current directory
+currentDir=$(pwd)
+
+# Change to the root directory of the Git repository
+cd "$(git rev-parse --show-toplevel)"
+
+# Deleting desktop.ini files from the project directory and removing them from the Git index
+find . -name 'desktop.ini' -print0 | while IFS= read -r -d '' file; do
+    if [ -f "$file" ]; then
+        git rm --cached --force "$file"
+        rm "$file"
+    fi
+done
+
+# Return to the original directory
+cd "$currentDir"
+
+echo ":::: DELETE OPERATION COMPLETED ::::"
 
 exit $RETURN

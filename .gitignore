@@ -959,16 +959,32 @@ coverage*[.json, .xml, .info]
 # Additional files built by Visual Studio
 
 # End of https://www.toptal.com/developers/gitignore/api/c,csharp,vs,visualstudio,visualstudiocode,java,maven,c++,cmake,eclipse,netbeans
+**/desktop.ini 
 
-/docs/doxygen
-/docs/assets/
-/docs/coveragereport
-/docs/coverxygen
-/site
-/calculator/cobertura.xml
-/cobertura.xml
-*.orig
-*.cov
-*.csv
-/build_win
-/calculatorapp_unit_win_cobertura.xml
+/build_win/**
+/release_win/**
+/publish_win/**
+/build_linux/**
+/release_linux/**
+/publish_linux/**
+
+/*.cov
+/*_cobertura.xml
+
+/report_doc_lib_hist_linux/
+/report_doc_lib_hist_win/
+/report_doc_test_hist_linux/
+/report_doc_test_hist_win/
+/report_test_hist_linux/
+/report_test_hist_win/
+/docs/coverxygenlibwin
+/docs/coverxygentestwin/
+/docs/doxygen**
+/docs/assets/badge-macos.svg
+/docs/assets/badge-ubuntu.svg
+/docs/assets/badge-windows.svg
+/docs/assets/codecoverageliblinux
+/docs/assets/codecoveragelibwin
+/docs/assets/doccoverageliblinux
+/docs/assets/doccoveragetestwin
+/docs/assets
