@@ -791,49 +791,49 @@ jobs:
 
       - name: Download Web Site Artifact
         if: matrix.config.active == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_web.tar.gz
           path: release/${{ matrix.config.artifact }}_web.tar.gz
 
       - name: Download Publish Artifact
         if: matrix.config.active == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_pub.tar.gz
           path: release/${{ matrix.config.artifact }}_pub.tar.gz
 
       - name: Download Binary Release Artifact
         if: matrix.config.active == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_bin_release.tar.gz
           path: release/${{ matrix.config.artifact }}_bin_release.tar.gz
 
       - name: Download Binary Debug Artifact
         if: matrix.config.active == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_bin_debug.tar.gz
           path: release/${{ matrix.config.artifact }}_bin_debug.tar.gz
 
       - name: Download Document Coverate Report Artifact
         if: matrix.config.active == true  && matrix.config.doccoverage == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_dxy.tar.gz
           path: release/${{ matrix.config.artifact }}_dxy.tar.gz
 
       - name: Download Unit Test Coverage Report Artifact
         if: matrix.config.active == true && matrix.config.testcoverage == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_tst.tar.gz
           path: release/${{ matrix.config.artifact }}_tst.tar.gz
 
       - name: Download Doxygen Output Artifact
         if: matrix.config.active == true
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: ${{ matrix.config.artifact }}_doc.tar.gz
           path: release/${{ matrix.config.artifact }}_doc.tar.gz
